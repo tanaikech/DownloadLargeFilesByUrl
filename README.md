@@ -202,7 +202,7 @@ function main() {
 ## Configuration file for downloading
 When the download is started, a configuration file is created in the temporal folder of ``tempFolderId``. You can see the folder as the folder name of "DownloadLargeFilesByUrl#####" (##### is number). This folder is used for saving the chunk files which were obtained by the split downloaded. And the configuration file of ``DownloadLargeFilesByUrl.cfg`` is also created in the folder. The structure of configuration file is as follows. This file is automatically created and used for downloading the file.
 
-~~~json
+~~~
 {
   "url": "### URL of file you want to download ###",
   "fileName": "### filename ###",
