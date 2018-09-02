@@ -119,25 +119,30 @@ Retrieve the current condition of download in ``tempFolderId``.
 ## Flow of download
 This is a flow that this library downloads a file.
 
-1. Run a following script. When the script was finished, you can retrieve "tempFolderId" as follows. After 2nd running, it uses "tempFolderId".
-<pre>
+- (1)
+Run a following script. When the script was finished, you can retrieve "tempFolderId" as follows. After 2nd running, it uses "tempFolderId".
+
+~~~javascript
 var resource = {
     url: "### download URL ###",
 };
 var res = DownloadLargeFilesByUrl.download(resource);
 var tempFolderId = res.tempFolderId;
-</pre>
+~~~
 
-2. After 2nd running, please include "tempFolderId" in "resource" object, and run the script. By this, both the downloading and joining process are progressed.
-<pre>
+- (2)
+After 2nd running, please include "tempFolderId" in "resource" object, and run the script. By this, both the downloading and joining process are progressed.
+    - When the download was completely done, ``{"message":"Download of file had already been done."}`` is returned.
+    - If you want to retrieve the current condition of downloading, please use the getStatus method.
+
+~~~javascript
 var resource = {
     url: "### download URL ###",
     tempFolderId: tempFolderId,
 };
 var res = DownloadLargeFilesByUrl.download(resource);
-</pre>
-    - When the download was completely done, ``{"message":"Download of file had already been done."}`` is returned.
-    - If you want to retrieve the current condition of downloading, please use the getStatus method.
+~~~
+
 
 ## Sample script
 This is a sample script which reflected above flow. When above flow is manually run, the process cost becomes very high. So this script is automated using the time trigger. This is a very simple sample. So please modify this for your situation.
