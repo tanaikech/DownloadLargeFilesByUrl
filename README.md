@@ -14,7 +14,8 @@ DownloadLargeFilesByUrl
 I had been thinking of about whether a large file from an URL can be downloaded to Google Drive using GAS. When I have tried to download such large files, I noticed the following limitations. These limitations are due to the specification of GAS.
 
 - When users download a file from URL using GAS, at the most users, it retrieves the blob using ``UrlFetchApp.fetch(url).getBlob()`` and saves it as a file using ``DriveApp.createFile(blob)``. In this case, only files less than 50 MB (52,428,800 bytes) can be created, because of the size limitation of Blob. [Ref 1](#references)
-- There are a limit executing time for Google Apps Script (GAS). That is 6 min/execution. [Ref 2](#references)
+- There are a limit executing time for Google Apps Script (GAS). That is 6 min/execution. [Ref 2](#references) And also G Suite Business accounts have 30 min/execution.
+
 - There are a limit of total executing time for running scripts by triggers. That is 90 min/day. (Recently, it became from 60 min/day to 90 min/day.) [Ref 2](#references)
 
 When it tries to create the application for downloading the large files, it is required to consider above limitations. On the other hand, there are the following relaxations of quotas by the recent Google's update.
