@@ -229,7 +229,7 @@ function getStatus(resource) {
       if (res.getResponseCode() === 206) {
         headers = res.getHeaders();
         range = headers["Content-Range"].split("\/");
-        this.cfgVal.fileName = headers["Content-Disposition"].match(/filename=\"([a-zA-Z0-9\s\S].+)\";/)[1].trim() || this.startTime.toString();
+        this.cfgVal.fileName = headers["Content-Disposition"] ? headers["Content-Disposition"].match(/filename=\"([a-zA-Z0-9\s\S].+)\";/)[1].trim() : this.startTime.toString();
         if (this.cfgVal.mimeType === "") {
           this.cfgVal.mimeType = headers["Content-Type"].split(";")[0];
         }

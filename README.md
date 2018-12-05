@@ -284,5 +284,8 @@ If you have any questions and commissions for me, feel free to tell me.
 
     1. Initial release.
 
+* v1.0.1 (December 5, 2018)
+
+    1. When the filename have not been retrieved, an error have occurred. This bug was removed.
 
 [TOP](#TOP)
