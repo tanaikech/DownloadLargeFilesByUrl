@@ -75,7 +75,7 @@ function getStatus(resource) {
     };
 
     downloadMain = function() {
-      var chunks, fileSize, nStart, ranges;
+      var chunks, fileSize, nStart, ranges, req, res;
       ranges = [];
       if (this.tempFolderId !== "") {
         if (chkFolder.call(this, this.tempFolderId)) {
@@ -113,7 +113,13 @@ function getStatus(resource) {
       } else {
         chkDl.call(this);
         if (this.cfgVal.fileSize < this.chunkSize) {
-          return createSingleFile.call(this, blob);
+          req = {
+            url: this.url,
+            method: "get",
+            muteHttpExceptions: true
+          };
+          res = fetch.call(this, [req]);
+          return createSingleFile.call(this, res.getBlob());
         }
         if (this.cfgVal.fileSize <= this.downloadPerExecution * this.chunkSize) {
           ranges = createRanges.call(this, this.cfgVal.fileSize, 0);
